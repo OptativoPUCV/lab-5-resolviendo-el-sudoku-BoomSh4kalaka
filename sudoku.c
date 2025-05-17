@@ -99,7 +99,12 @@ List* get_adj_nodes(Node* n){
                 for(i=1;i<=9;i++){
                     Node* new=copy(n);
                     new->sudo[row][col]=i;
-                    pushBack(list, new);
+                    if (is_valid(new)){
+                        pushBack(list, new);
+                    }
+                    else {
+                        free(new);
+                    }
                 }
                 return list;
             }
